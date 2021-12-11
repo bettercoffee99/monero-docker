@@ -25,7 +25,6 @@ services:
    - /bin/bash
    - -c
    - |
-     ./monero-wallet-rpc --rpc-login marketplace:CenoaxLSBGUDLmHpBLXHKDSVHsFQLEiGkPSLuK2ABhVRJ2xMvupetD --wallet-file /home/monero/wallet/marketplace --password "4QF7I96bdmHkY41XconhdmKrSugrh565rh36mPkxJOi2DizhjOPI7MyiClZxW8A5GK" --rpc-bind-ip 0.0.0.0 --rpc-bind-port 18082 --daemon-login marketplace:nTSvUYJG3ED4LizRzhS7nv8pOYFF0sMnbw --confirm-external-bind
      ./monerod --prune-blockchain --tx-proxy "tor,127.0.0.1:9050,10,disable_noise" --config-file /home/monero/.bitmonero/monerod.conf --non-interactive --no-igd --hide-my-port --pad-transactions
   networks:
    - monerod
