@@ -108,5 +108,6 @@ start_mining 2
 This will start mining on the daemon usin two threads. Note that this is solo mining, and may take a while before you find a block. To stop mining:
 
 stop_mining
+```
 
 ####### Donate to my xmr : 44EDYB6cp27NKBKBtW6PQCSB4nHGnmmMk59BNPwdVZPPi1DNjM5ovxy7B8HDESxF2wexA8p7mbEVKN9go5pbrhwNMnNMZGQ
