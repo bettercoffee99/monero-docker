@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+ #Monerod App
+ monerod-app:
+  build:
+   context: .
+   dockerfile: ./Dockerfile
+  container_name: monerod-app
+  restart: unless-stopped
+  #ports:
+  # - "18080:18080"
+  # - "18081:18081"
+  volumes:
+   - ./wallet:/home/monero/wallet
+   - ./data:/home/monero/.bitmonero
+   - ./monerod/monerod.conf:/home/monero/.bitmonero/monerod.conf
+  cap_add:
+   - all
+  environment:
+   - USER_ID=1000
+   - USE_TORSOCKS=YES
+   - USE_TOR=YES
+  command: 
+   - /bin/bash
+   - -c
+   - |
+     ./monero-wallet-rpc --rpc-login marketplace:CenoaxLSBGUDLmHpBLXHKDSVHsFQLEiGkPSLuK2ABhVRJ2xMvupetD --wallet-file /home/monero/wallet/marketplace --password "4QF7I96bdmHkY41XconhdmKrSugrh565rh36mPkxJOi2DizhjOPI7MyiClZxW8A5GK" --rpc-bind-ip 0.0.0.0 --rpc-bind-port 18082 --daemon-login marketplace:nTSvUYJG3ED4LizRzhS7nv8pOYFF0sMnbw --confirm-external-bind
+     ./monerod --prune-blockchain --tx-proxy "tor,127.0.0.1:9050,10,disable_noise" --config-file /home/monero/.bitmonero/monerod.conf --non-interactive --no-igd --hide-my-port --pad-transactions
+  networks:
+   - monerod
+
+networks:
+ monerod:
+  driver: bridge
